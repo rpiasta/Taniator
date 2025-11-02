@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: AI DEVS API
+  version: 21.37.69
+servers:
+  - url: http://localhost:8000
+
+paths:
+  /api/product:
+    $ref: 'paths/product.yaml'
+  /api/biedronka/token:
+    $ref: 'paths/biedronka/token.yaml'
+  /api/biedronka/login:
+    $ref: 'paths/biedronka/login.yaml'

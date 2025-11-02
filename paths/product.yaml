@@ -1,0 +1,34 @@
+get:
+  parameters:
+    - name: XDEBUG_SESSION_START
+      in: query
+      required: false
+      schema:
+        type: string
+      description: "Debug session trigger"
+    - name: barcode
+      in: query
+      required: false
+      schema:
+        type: string
+      description: "Barcode"
+  summary: product
+  responses:
+    '200':
+      description: Successful
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              flag:
+                type: string
+    '401':
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

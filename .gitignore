@@ -1,0 +1,18 @@
+# PHP / Composer
+/vendor/
+composer.lock
+
+# Environment variables
+.env
+
+# Cache / logs / tmp
+/.idea/
+/var/
+/cache/
+/logs/
+/tmp/
+
+# OS / editor stuff
+.DS_Store
+*.swp
+*.bak
