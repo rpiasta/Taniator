@@ -15,19 +15,37 @@ docker-compose up --build
 2. **Wykonaj na kontenerze:**
 
 ```bash
-composer install
+docker compose exec app composer install
 ```
 
 3. **Aplikacja jest dostępna na:**
 
 ```bash
-http://localhost:8000/api/example
+http://localhost:8000
 ```
 
 4. **Swagger UI dostępny jest pod:**
 
 ```bash
 http://localhost:8080
+```
+
+4. **Admner dostępny jest pod:**
+
+```bash
+http://localhost:5050
+
+Użytkownik: app_user
+Hasło: app_pass
+Baza danych: app_db
+```
+
+**ZMANY NA BAZIE**
+```
+docker compose exec app php vendor/bin/doctrine-migrations diff
+```
+```
+docker compose exec app php vendor/bin/doctrine-migrations migrate
 ```
 
 **Dodawanie nowych endpointów**
@@ -47,6 +65,21 @@ CURL
 ```
 curl -H "XDEBUG_TRIGGER=1" http://localhost:8000/api/example
 ```
+
+**REBUILD OBRAZOW**
+```
+docker system prune -a --volumes -f
+```
+```
+docker compose build --no-cache
+```
+```
+docker compose up -d
+```
+```
+docker compose exec app composer install
+```
+
 
 ## USTAWIENIE DEBUGGERA
 
