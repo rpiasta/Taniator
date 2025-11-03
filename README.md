@@ -18,19 +18,25 @@ docker-compose up --build
 docker compose exec app composer install
 ```
 
-3. **Aplikacja jest dostępna na:**
+3**Wykonaj migracje:**
+
+```bash
+docker compose exec app php vendor/bin/doctrine-migrations migrate
+```
+
+4**Aplikacja jest dostępna na:**
 
 ```bash
 http://localhost:8000
 ```
 
-4. **Swagger UI dostępny jest pod:**
+5**Swagger UI dostępny jest pod:**
 
 ```bash
 http://localhost:8080
 ```
 
-4. **Admner dostępny jest pod:**
+6**Admner dostępny jest pod:**
 
 ```bash
 http://localhost:5050
