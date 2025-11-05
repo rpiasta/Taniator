@@ -23,17 +23,21 @@ readonly class User
     #[ORM\Column(length: 50)]
     public string $name;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    public DateTimeImmutable $createdAt;
-
     #[ORM\Column(length: 20)]
     public string $status;
+
+    #[ORM\Column(length: 20)]
+    public string $role;
+
+    #[ORM\Column(type: 'datetime_immutable')]
+    public DateTimeImmutable $createdAt;
 
     public function __construct(
         string $email,
         string $password,
         string $name,
         string $status,
+        string $role,
 
     ) {
         $this->uuid = Uuid::uuid4()->toString();
@@ -41,6 +45,7 @@ readonly class User
         $this->password = $password;
         $this->name = $name;
         $this->status = $status;
+        $this->role = $role;
         $this->createdAt = new DateTimeImmutable();
     }
 }

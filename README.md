@@ -24,19 +24,24 @@ docker compose exec app composer install
 docker compose exec app php vendor/bin/doctrine-migrations migrate
 ```
 
-4**Aplikacja jest dostępna na:**
+4**Dodaj fixturki:**
+```
+docker compose exec app php bin/load-fixtures.php
+```
+
+5**Aplikacja jest dostępna na:**
 
 ```bash
 http://localhost:8000
 ```
 
-5**Swagger UI dostępny jest pod:**
+6**Swagger UI dostępny jest pod:**
 
 ```bash
 http://localhost:8080
 ```
 
-6**Admner dostępny jest pod:**
+7**Admner dostępny jest pod:**
 
 ```bash
 http://localhost:5050
@@ -85,7 +90,12 @@ docker compose up -d
 ```
 docker compose exec app composer install
 ```
-
+```
+docker compose exec app php vendor/bin/doctrine-migrations migrate
+```
+```
+docker compose exec app php bin/load-fixtures.php
+```
 
 ## USTAWIENIE DEBUGGERA
 

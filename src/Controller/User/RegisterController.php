@@ -24,7 +24,10 @@ class RegisterController
         try {
             if ($request->getMethod() === HttpMethod::POST->value) {
                 $data = $request->getBody();
-                $this->registerService->register($data['email'], $data['password'], $data['name']);
+                $this->registerService->register(
+                    email: $data['email'],
+                    password: password_hash($data['password'], PASSWORD_DEFAULT),
+                    name: $data['name']);
                 return new Response(['message' => 'User registered successfully']);
             }
 

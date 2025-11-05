@@ -2,6 +2,7 @@
 
 namespace App\Service\User;
 
+use App\Constraints\UserRole;
 use App\Constraints\UserStatus;
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -34,6 +35,7 @@ class RegisterService
             password: $password,
             name: $name,
             status: UserStatus::ACTIVE->value,
+            role: UserRole::USER->value
         );
         $this->userRepository->save($user);
     }
