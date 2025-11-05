@@ -15,7 +15,7 @@ class UserFixtures implements FixtureInterface
         $admin = new User(
             email: 'admin@example.com',
             password: password_hash('admin123', PASSWORD_DEFAULT),
-            name: 'Administrator',
+            name: 'Admin',
             status: UserStatus::ACTIVE->value,
             role: UserRole::ADMIN->value
         );
