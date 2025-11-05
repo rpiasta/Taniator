@@ -1,0 +1,50 @@
+post:
+  summary: Register user
+  parameters:
+    - name: XDEBUG_SESSION_START
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Debug session trigger
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+              example: "john@example.com"
+            password:
+              type: string
+              example: "1234"
+            name:
+              type: string
+              example: "John"
+          required:
+            - email
+            - password
+            - name
+  responses:
+    '200':
+      description: Successful registration
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                example: "User registered successfully"
+    '400':
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: "Missing or invalid data"

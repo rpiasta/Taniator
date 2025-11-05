@@ -12,3 +12,5 @@ paths:
     $ref: 'paths/biedronka/token.yaml'
   /api/biedronka/login:
     $ref: 'paths/biedronka/login.yaml'
+  /api/users/register:
+    $ref: 'paths/user/register.yaml'

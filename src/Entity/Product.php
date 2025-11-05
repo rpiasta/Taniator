@@ -7,24 +7,24 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 #[ORM\Entity]
-#[ORM\Table(name: 'product')]
-class Product
+#[ORM\Table(name: 'products')]
+readonly class Product
 {
     #[ORM\Id]
     #[ORM\Column(type: 'guid', unique: true)]
-    public readonly string $uuid;
+    public string $uuid;
 
     #[ORM\Column(length: 20)]
-    public readonly string $barcode;
+    public string $barcode;
 
     #[ORM\Column(length: 50)]
-    public readonly string $store;
+    public string $store;
 
     #[ORM\Column(type: 'json')]
     public array $data;
 
     #[ORM\Column(type: 'datetime_immutable')]
-    public readonly DateTimeImmutable $createdAt;
+    public DateTimeImmutable $createdAt;
 
     public function __construct(
         string $barcode,

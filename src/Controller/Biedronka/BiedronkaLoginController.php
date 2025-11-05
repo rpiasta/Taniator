@@ -2,11 +2,11 @@
 
 namespace App\Controller\Biedronka;
 
+use App\Constraints\HttpMethod;
 use App\Constraints\HttpStatus;
 use App\Core\Http\Request;
 use App\Core\Http\Response;
 use App\Service\Biedronka\BiedronkaLoginService;
-use App\Service\Biedronka\BiedronkaTokenService;
 use Exception;
 use Throwable;
 
@@ -22,7 +22,7 @@ class BiedronkaLoginController
     public function __invoke(Request $request): Response
     {
         try {
-            if ($request->getMethod() === 'GET') {
+            if ($request->getMethod() === HttpMethod::GET->value) {
                 return new Response([$this->biedronkaLoginService->process()]);
             }
 

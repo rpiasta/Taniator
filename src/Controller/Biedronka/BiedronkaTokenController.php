@@ -2,6 +2,7 @@
 
 namespace App\Controller\Biedronka;
 
+use App\Constraints\HttpMethod;
 use App\Constraints\HttpStatus;
 use App\Core\Http\Request;
 use App\Core\Http\Response;
@@ -21,7 +22,7 @@ class BiedronkaTokenController
     public function __invoke(Request $request): Response
     {
         try {
-            if ($request->getMethod() === 'GET') {
+            if ($request->getMethod() === HttpMethod::GET->value) {
                 $athorizationCode = $request->getQueryParams()['authorizationCode'];
                 if (!$athorizationCode) {
                     throw new Exception("Authorization Code is required");
