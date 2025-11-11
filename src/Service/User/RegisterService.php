@@ -26,7 +26,7 @@ class RegisterService
      */
     public function register(string $email, string $password, string $name): void
     {
-        if ($this->userRepository->findByEmal($email)) {
+        if ($this->userRepository->findByEmail($email)) {
             throw new Exception('User with that e-mail address already exists');
         }
 

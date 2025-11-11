@@ -8,6 +8,7 @@ use App\Constraints\HttpStatus;
 use App\Controller\Factory\Biedronka\BiedronkaLoginControllerFactory;
 use App\Controller\Factory\Biedronka\BiedronkaTokenControllerFactory;
 use App\Controller\Factory\ProductControllerFactory;
+use App\Controller\Factory\User\LoginControllerFactory;
 use App\Controller\Factory\User\RegsterControllerFactory;
 use App\Core\Http\Request;
 use App\Core\Router;
@@ -27,6 +28,7 @@ $router->add('GET', '/api/biedronka/token', BiedronkaTokenControllerFactory::cre
 $router->add('GET', '/api/biedronka/login', BiedronkaLoginControllerFactory::create());
 
 $router->add('POST', '/api/users/register', RegsterControllerFactory::create());
+$router->add('POST', '/api/users/login', LoginControllerFactory::create());
 
 $request = new Request();
 $response = $router->dispatch($request);

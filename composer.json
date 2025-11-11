@@ -8,7 +8,8 @@
     "doctrine/orm": "^3.3",
     "ramsey/uuid": "^4.7",
     "symfony/cache": "^7.3",
-    "doctrine/migrations": "^3.9"
+    "doctrine/migrations": "^3.9",
+    "firebase/php-jwt": "^6.8"
   },
   "require-dev": {
     "doctrine/data-fixtures": "^1.7",

@@ -14,3 +14,5 @@ paths:
     $ref: 'paths/biedronka/login.yaml'
   /api/users/register:
     $ref: 'paths/user/register.yaml'
+  /api/users/login:
+    $ref: 'paths/user/login.yaml'
