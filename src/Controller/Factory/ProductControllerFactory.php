@@ -4,6 +4,7 @@ namespace App\Controller\Factory;
 
 use App\Controller\ProductController;
 use App\Core\Http\HttpClient;
+use App\Repository\ProductHistoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use App\Service\Biedronka\BiedronkaProductService;
@@ -21,11 +22,13 @@ class ProductControllerFactory
         $biedronkaProductService = new BiedronkaProductService($httpClient, $biedronkaRefreshTokenService);
         $prouctRepository = new ProductRepository();
         $userRepository = new UserRepository();
+        $productHistoryRepository = new ProductHistoryRepository();
         $productService = new ProductService(
             $biedronkaProductService,
             $SelgrosProductService,
             $prouctRepository,
-            $userRepository
+            $userRepository,
+            $productHistoryRepository
         );
 
         return new ProductController($productService);

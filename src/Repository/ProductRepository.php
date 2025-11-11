@@ -36,6 +36,19 @@ class ProductRepository
         return $this->repository->findOneBy(['barcode' => $barcode]);
     }
 
+    public function findLatestByBarcodeAndStore(string $barcode, string $store): ?Product
+    {
+        return $this->repository->createQueryBuilder('p')
+            ->where('p.barcode = :barcode')
+            ->andWhere('p.store = :store')
+            ->setParameter('barcode', $barcode)
+            ->setParameter('store', $store)
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function findAll(): array
     {
         return $this->repository->findAll();
