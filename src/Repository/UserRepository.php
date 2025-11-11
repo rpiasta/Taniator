@@ -35,4 +35,9 @@ class UserRepository
     {
         return $this->repository->findOneBy(['email' => $email]);
     }
+
+    public function getByUuid(string $uuid): ?User
+    {
+        return $this->repository->findOneBy(['uuid' => $uuid]);
+    }
 }

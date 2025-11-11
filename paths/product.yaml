@@ -1,18 +1,22 @@
 get:
+  summary: product
   parameters:
     - name: XDEBUG_SESSION_START
       in: query
       required: false
       schema:
         type: string
+        example: "XDEBUG_SESSION_START"
       description: "Debug session trigger"
     - name: barcode
       in: query
       required: false
       schema:
         type: string
+        example: "2137"
       description: "Barcode"
-  summary: product
+  security:
+    - bearerAuth: []
   responses:
     '200':
       description: Successful

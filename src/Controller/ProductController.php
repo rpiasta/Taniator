@@ -27,7 +27,8 @@ class ProductController
                 if (!$barcode) {
                     throw new Exception("Barcode is required");
                 }
-                return new Response([$this->productService->process($barcode)]);
+                $user = $request->getAttribute('user');
+                return new Response([$this->productService->process($barcode, $user['sub'])]);
             }
 
             throw new Exception('Method Not Allowed', HttpStatus::NOT_ALLOWED->value);

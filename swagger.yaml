@@ -5,6 +5,13 @@ info:
 servers:
   - url: http://localhost:8000
 
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
 paths:
   /api/product:
     $ref: 'paths/product.yaml'

@@ -7,6 +7,8 @@ class Request
     private string $path;
     private array $queryParams;
     private array $body;
+    private array $headers = [];
+    private array $attributes = [];
 
     public function __construct()
     {
@@ -15,6 +17,10 @@ class Request
         $this->queryParams = $_GET;
         $input = file_get_contents('php://input');
         $this->body = json_decode($input, true) ?? [];
+
+        foreach (getallheaders() as $name => $value) {
+            $this->headers[strtolower($name)] = $value;
+        }
     }
 
     public function getMethod(): string
@@ -35,5 +41,20 @@ class Request
     public function getBody(): array
     {
         return $this->body;
+    }
+
+    public function getHeader(string $name): ?string
+    {
+        return $this->headers[strtolower($name)] ?? null;
+    }
+
+    public function setAttribute(string $key, $value): void
+    {
+        $this->attributes[$key] = $value;
+    }
+
+    public function getAttribute(string $key)
+    {
+        return $this->attributes[$key] ?? null;
     }
 }
