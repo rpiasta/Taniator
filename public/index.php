@@ -33,13 +33,12 @@ $router = new Router();
 
 $router->add('POST', '/api/users/register', RegsterControllerFactory::create());
 $router->add('POST', '/api/users/login', LoginControllerFactory::create());
+
 $router->add('GET', '/api/biedronka/token', BiedronkaTokenControllerFactory::create());
 $router->add('GET', '/api/biedronka/login', BiedronkaLoginControllerFactory::create());
 
-$router->add('GET', '/api/product', function (Request $request) use ($authMiddleware) {
-    $controller = ProductControllerFactory::create();
-    return $authMiddleware->handle($request, fn($req) => $controller($req));
-});
+/** Protected endpoints */
+$router->add('GET', '/api/product', ProductControllerFactory::create(), [$authMiddleware]);
 
 $request = new Request();
 $response = $router->dispatch($request);
