@@ -23,3 +23,5 @@ paths:
     $ref: 'paths/user/register.yaml'
   /api/users/login:
     $ref: 'paths/user/login.yaml'
+  /api/product_history:
+    $ref: 'paths/product_history.yaml'

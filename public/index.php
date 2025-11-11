@@ -4,7 +4,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Constraints\HttpStatus;
 use App\Controller\Factory\Biedronka\BiedronkaLoginControllerFactory;
 use App\Controller\Factory\Biedronka\BiedronkaTokenControllerFactory;
-use App\Controller\Factory\ProductControllerFactory;
+use App\Controller\Factory\Product\ProductControllerFactory;
+use App\Controller\Factory\Product\ProductHistoryControllerFactory;
 use App\Controller\Factory\User\LoginControllerFactory;
 use App\Controller\Factory\User\RegsterControllerFactory;
 use App\Core\Http\Request;
@@ -39,6 +40,7 @@ $router->add('GET', '/api/biedronka/login', BiedronkaLoginControllerFactory::cre
 
 /** Protected endpoints */
 $router->add('GET', '/api/product', ProductControllerFactory::create(), [$authMiddleware]);
+$router->add('GET', '/api/product_history', ProductHistoryControllerFactory::create(), [$authMiddleware]);
 
 $request = new Request();
 $response = $router->dispatch($request);

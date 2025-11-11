@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Service;
+namespace App\Service\Product;
 
 use App\Constraints\Store;
 use App\Entity\Product;
 use App\Entity\ProductHistory;
-use App\Entity\User;
 use App\Repository\ProductHistoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;

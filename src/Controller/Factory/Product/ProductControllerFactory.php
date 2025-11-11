@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Controller\Factory;
+namespace App\Controller\Factory\Product;
 
-use App\Controller\ProductController;
+use App\Controller\Product\ProductController;
 use App\Core\Http\HttpClient;
 use App\Repository\ProductHistoryRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use App\Service\Biedronka\BiedronkaProductService;
 use App\Service\Biedronka\BiedronkaRefreshTokenService;
-use App\Service\ProductService;
+use App\Service\Product\ProductService;
 use App\Service\Selgros\SelgrosProductService;
 
 class ProductControllerFactory

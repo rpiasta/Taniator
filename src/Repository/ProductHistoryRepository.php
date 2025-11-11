@@ -31,7 +31,7 @@ class ProductHistoryRepository
         $this->em->flush();
     }
 
-    public function findByUser(User $user, int $limit = 10): array
+    public function findLatestByUser(User $user, int $limit = 10): array
     {
         return $this->repository->createQueryBuilder('ph')
             ->where('ph.user = :user')
@@ -40,15 +40,5 @@ class ProductHistoryRepository
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
-    }
-
-    public function findByBarcode(string $barcode): array
-    {
-        return $this->repository->findBy(['barcode' => $barcode]);
-    }
-
-    public function findAll(): array
-    {
-        return $this->repository->findAll();
     }
 }

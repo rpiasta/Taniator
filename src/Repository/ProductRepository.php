@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Container;
 use App\Entity\Product;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Exception\ORMException;
@@ -49,25 +50,22 @@ class ProductRepository
             ->getOneOrNullResult();
     }
 
-    public function findAll(): array
-    {
-        return $this->repository->findAll();
-    }
-
     /**
-     * @throws OptimisticLockException
-     * @throws ORMException
+     * @return Product[]
      */
-    public function deleteByBarcode(string $barcode): bool
+    public function findByBarcodeStoreAndDay(string $barcode, DateTimeImmutable $day): array
     {
-        $product = $this->findByBarcode($barcode);
-        if (!$product) {
-            return false;
-        }
+        $dayStart = $day->setTime(0, 0, 0);
+        $dayEnd   = $day->setTime(23, 59, 59);
 
-        $this->em->remove($product);
-        $this->em->flush();
-
-        return true;
+        return $this->repository->createQueryBuilder('p')
+            ->where('p.barcode = :barcode')
+            ->andWhere('p.createdAt BETWEEN :start AND :end')
+            ->setParameter('barcode', $barcode)
+            ->setParameter('start', $dayStart)
+            ->setParameter('end', $dayEnd)
+            ->orderBy('p.createdAt', 'DESC')
+            ->getQuery()
+            ->getResult();
     }
 }
